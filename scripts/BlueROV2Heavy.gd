@@ -1,18 +1,20 @@
-tool
+tool 
 extends RigidBody
 
 const THRUST = 50
 
-var interface = PacketPeerUDP.new()  # UDP socket for fdm in (server)
+var interface = PacketPeerUDP.new()
 var peer = null
 var start_time = OS.get_ticks_msec()
 
 var last_velocity = Vector3(0, 0, 0)
 var calculated_acceleration = Vector3(0, 0, 0)
 
-var buoyancy = 1.6 + self.mass * 9.8  # Newtons
+var buoyancy = 1.6 + self.mass * 9.8
 var _initial_position = 0
 var phys_time = 0
+const deadzone = 0.2
+var gain = 50
 
 onready var light_glows = [$light_glow, $light_glow2, $light_glow3, $light_glow4]
 
@@ -42,7 +44,7 @@ func get_servos():
 	var magic = buffer.get_u16()
 	buffer.seek(2)
 	var _framerate = buffer.get_u16()
-	#print(_framerate)
+	
 	buffer.seek(4)
 	var _framecount = buffer.get_u16()
 
@@ -60,12 +62,12 @@ func send_fdm():
 
 	var _basis = transform.basis
 
-# These are the same but mean different things, let's keep both for now
-	var toNED = Basis(Vector3(-1, 0, 0), Vector3(0, 0, -1), Vector3(1, 0, 0))
 
-	toNED = Basis(Vector3(1, 0, 0), Vector3(0, 0, -1), Vector3(0, 1, 0))
+	var toNED = Basis(Vector3( - 1, 0, 0), Vector3(0, 0, - 1), Vector3(1, 0, 0))
 
-	var toFRD = Basis(Vector3(0, -1, 0), Vector3(0, 0, -1), Vector3(1, 0, 0))
+	toNED = Basis(Vector3(1, 0, 0), Vector3(0, 0, - 1), Vector3(0, 1, 0))
+
+	var toFRD = Basis(Vector3(0, - 1, 0), Vector3(0, 0, - 1), Vector3(1, 0, 0))
 
 	var _angular_velocity = toFRD.xform(_basis.xform_inv(angular_velocity))
 	var gyro = [_angular_velocity.x, _angular_velocity.y, _angular_velocity.z]
@@ -74,8 +76,8 @@ func send_fdm():
 
 	var accel = [_acceleration.x, _acceleration.y, _acceleration.z]
 
-	# var orientation = toFRD.xform(Vector3(-rotation.x, - rotation.y, -rotation.z))
-	var quaternon = Basis(-_basis.z, _basis.x, _basis.y).rotated(Vector3(1, 0, 0), PI).rotated(Vector3(1, 0, 0), PI / 2).get_rotation_quat()
+	
+	var quaternon = Basis( - _basis.z, _basis.x, _basis.y).rotated(Vector3(1, 0, 0), PI).rotated(Vector3(1, 0, 0), PI / 2).get_rotation_quat()
 
 	var euler = quaternon.get_euler()
 	euler = [euler.y, euler.x, euler.z]
@@ -88,10 +90,10 @@ func send_fdm():
 
 	var IMU_fmt = {"gyro": gyro, "accel_body": accel}
 	var JSON_fmt = {
-		"timestamp": phys_time,
-		"imu": IMU_fmt,
-		"position": pos,
-		"quaternion": [quaternon.w, quaternon.x, quaternon.y, quaternon.z],
+		"timestamp": phys_time, 
+		"imu": IMU_fmt, 
+		"position": pos, 
+		"quaternion": [quaternon.w, quaternon.x, quaternon.y, quaternon.z], 
 		"velocity": velo
 	}
 	var JSON_string = "\n" + JSON.print(JSON_fmt) + "\n"
@@ -101,20 +103,20 @@ func send_fdm():
 
 func get_motors_table_entry(thruster):
 	
-	var thruster_vector = (thruster.transform.basis*Vector3(1,0,0)).normalized()
-	var roll = Vector3(0,0,-1).cross(thruster.translation).normalized().dot(thruster_vector)
-	var pitch = Vector3(1,0,0).cross(thruster.translation).normalized().dot(thruster_vector)
-	var yaw = Vector3(0,1,0).cross(thruster.translation).normalized().dot(thruster_vector)
-	var forward = Vector3(0,0,-1).dot(thruster_vector)
-	var lateral = Vector3(1,0,0).dot(thruster_vector)
-	var vertical = Vector3(0,-1,0).dot(thruster_vector)
+	var thruster_vector = (thruster.transform.basis * Vector3(1, 0, 0)).normalized()
+	var roll = Vector3(0, 0, - 1).cross(thruster.translation).normalized().dot(thruster_vector)
+	var pitch = Vector3(1, 0, 0).cross(thruster.translation).normalized().dot(thruster_vector)
+	var yaw = Vector3(0, 1, 0).cross(thruster.translation).normalized().dot(thruster_vector)
+	var forward = Vector3(0, 0, - 1).dot(thruster_vector)
+	var lateral = Vector3(1, 0, 0).dot(thruster_vector)
+	var vertical = Vector3(0, - 1, 0).dot(thruster_vector)
 	if abs(roll) < 0.15 or not thruster.roll_factor:
 		roll = 0
 	if abs(pitch) < 0.15 or not thruster.pitch_factor:
 		pitch = 0
 	if abs(yaw) < 0.15 or not thruster.yaw_factor:
 		yaw = 0
-	if abs(vertical) < 0.15 or not thruster.vertical_factor :
+	if abs(vertical) < 0.15 or not thruster.vertical_factor:
 		vertical = 0
 	if abs(forward) < 0.15 or not thruster.forward_factor:
 		forward = 0
@@ -127,7 +129,7 @@ func calculate_motors_matrix():
 	var thrusters = []
 	var i = 1
 	for child in get_children():
-		if child.get_class() ==  "Thruster":
+		if child.get_class() == "Thruster":
 			thrusters.append(child)
 	for thruster in thrusters:
 		var entry = get_motors_table_entry(thruster)
@@ -149,6 +151,7 @@ func _ready():
 		return
 	if not Globals.isHTML5:
 		connect_fmd_in()
+	
 
 
 func _physics_process(delta):
@@ -156,6 +159,7 @@ func _physics_process(delta):
 		return
 	phys_time = phys_time + 1.0 / Globals.physics_rate
 	process_keys()
+	process_joystick()
 	if Globals.isHTML5:
 		return
 	calculated_acceleration = (self.linear_velocity - last_velocity) / delta
@@ -175,26 +179,26 @@ func actuate_servo(id, percentage):
 	if percentage == 0:
 		return
 
-	var force = (percentage - 0.5) * 2 * -THRUST
+	var force = (percentage - 0.5) * 2 * - THRUST
 	match id:
 		0:
-			self.add_force_local($t1.transform.basis*Vector3(force,0,0), $t1.translation)
+			self.add_force_local($t1.transform.basis * Vector3(force, 0, 0), $t1.translation)
 		1:
-			self.add_force_local($t2.transform.basis*Vector3(force,0,0), $t2.translation)
+			self.add_force_local($t2.transform.basis * Vector3(force, 0, 0), $t2.translation)
 		2:
-			self.add_force_local($t3.transform.basis*Vector3(force,0,0), $t3.translation)
+			self.add_force_local($t3.transform.basis * Vector3(force, 0, 0), $t3.translation)
 		3:
-			self.add_force_local($t4.transform.basis*Vector3(force,0,0), $t4.translation)
+			self.add_force_local($t4.transform.basis * Vector3(force, 0, 0), $t4.translation)
 		4:
-			self.add_force_local($t5.transform.basis*Vector3(force,0,0), $t5.translation)
+			self.add_force_local($t5.transform.basis * Vector3(force, 0, 0), $t5.translation)
 		5:
-			self.add_force_local($t6.transform.basis*Vector3(force,0,0), $t6.translation)
+			self.add_force_local($t6.transform.basis * Vector3(force, 0, 0), $t6.translation)
 		6:
-			self.add_force_local($t7.transform.basis*Vector3(force,0,0), $t7.translation)
+			self.add_force_local($t7.transform.basis * Vector3(force, 0, 0), $t7.translation)
 		7:
-			self.add_force_local($t8.transform.basis*Vector3(force,0,0), $t8.translation)
+			self.add_force_local($t8.transform.basis * Vector3(force, 0, 0), $t8.translation)
 		8:
-			$Camera.rotation_degrees.x = -45 + 90 * percentage
+			$Camera.rotation_degrees.x = - 45 + 90 * percentage
 		9:
 			percentage -= 0.1
 			$light1.light_energy = percentage * 5
@@ -212,9 +216,9 @@ func actuate_servo(id, percentage):
 		10:
 			if percentage < 0.4:
 				ljoint.set_param(6, 1)
-				rjoint.set_param(6, -1)
+				rjoint.set_param(6, - 1)
 			elif percentage > 0.6:
-				ljoint.set_param(6, -1)
+				ljoint.set_param(6, - 1)
 				rjoint.set_param(6, 1)
 			else:
 				ljoint.set_param(6, 0)
@@ -223,33 +227,33 @@ func actuate_servo(id, percentage):
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		# There are for debugging:
-		# Some forces:
+		
+		
 		if event.pressed and event.scancode == KEY_X:
 			self.add_central_force(Vector3(30, 0, 0))
 		if event.pressed and event.scancode == KEY_Y:
 			self.add_central_force(Vector3(0, 30, 0))
 		if event.pressed and event.scancode == KEY_Z:
 			self.add_central_force(Vector3(0, 0, 30))
-		# Reset position
+		
 		if event.pressed and event.scancode == KEY_R:
 			set_translation(_initial_position)
-		# Some torques
+		
 		if event.pressed and event.scancode == KEY_Q:
 			self.add_torque(self.transform.basis.xform(Vector3(15, 0, 0)))
 		if event.pressed and event.scancode == KEY_T:
 			self.add_torque(self.transform.basis.xform(Vector3(0, 15, 0)))
 		if event.pressed and event.scancode == KEY_E:
 			self.add_torque(self.transform.basis.xform(Vector3(0, 0, 15)))
-		# Some hard-coded positions (used to check accelerometer)
+		
 		if event.pressed and event.scancode == KEY_U:
-			self.look_at(Vector3(0, 100, 0), Vector3(0, 0, 1))  # expects +X
+			self.look_at(Vector3(0, 100, 0), Vector3(0, 0, 1))
 			mode = RigidBody.MODE_STATIC
 		if event.pressed and event.scancode == KEY_I:
-			self.look_at(Vector3(100, 0, 0), Vector3(0, 100, 0))  #expects +Z
+			self.look_at(Vector3(100, 0, 0), Vector3(0, 100, 0))
 			mode = RigidBody.MODE_STATIC
 		if event.pressed and event.scancode == KEY_O:
-			self.look_at(Vector3(100, 0, 0), Vector3(0, 0, -100))  #expects +Y
+			self.look_at(Vector3(100, 0, 0), Vector3(0, 0, - 100))
 			mode = RigidBody.MODE_STATIC
 
 		if event.pressed and event.is_action("camera_switch"):
@@ -258,8 +262,8 @@ func _unhandled_input(event):
 			else:
 				$Camera.set_current(true)
 
-	if event.is_action("lights_up"):
-		var percentage = min(max(0, $light1.light_energy + 0.1), 5)
+	if event.is_action_pressed("lights_up"):
+		var percentage = min(max(0, $light1.light_energy + 0.625), 5)
 		if percentage > 0:
 			for light in light_glows:
 				self.add_child(light)
@@ -267,52 +271,96 @@ func _unhandled_input(event):
 		$light2.light_energy = percentage
 		$light3.light_energy = percentage
 		$light4.light_energy = percentage
+		SignalBus.emit_signal("lights_changed", floor(percentage*20))
 		$scatterlight.light_energy = percentage * 0.5
 
-	if event.is_action("lights_down"):
-		var percentage = min(max(0, $light1.light_energy - 0.1), 5)
+	if event.is_action_pressed("lights_down"):
+		var percentage = min(max(0, $light1.light_energy - 0.625), 5)
 		$light1.light_energy = percentage
 		$light2.light_energy = percentage
 		$light3.light_energy = percentage
 		$light4.light_energy = percentage
 		$scatterlight.light_energy = percentage * 0.5
+		SignalBus.emit_signal("lights_changed", floor(percentage*20))
 		if percentage == 0:
 			for light in light_glows:
 				self.remove_child(light)
+	if event.is_action_pressed("increase_gain"):
+		if (gain <100):
+			gain+=25
+		SignalBus.emit_signal("gain_changed", gain)
+	if event.is_action_pressed("decrease_gain"):
+		if (gain >25):
+			gain -= 25
+		SignalBus.emit_signal("gain_changed", gain)
+	
 
 
 func process_keys():
 	if Input.is_action_pressed("forward"):
-		self.add_force_local(Vector3(0, 0, 40), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3(0, 0, 40), Vector3(0, - 0.05, 0))
 	elif Input.is_action_pressed("backwards"):
 		self.add_force_local(Vector3(0, 0, -40), Vector3(0, -0.05, 0))
 
 	if Input.is_action_pressed("strafe_right"):
-		self.add_force_local(Vector3(-40, 0, 0), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3( - 40, 0, 0), Vector3(0, - 0.05, 0))
 	elif Input.is_action_pressed("strafe_left"):
-		self.add_force_local(Vector3(40, 0, 0), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3(40, 0, 0), Vector3(0, - 0.05, 0))
 
 	if Input.is_action_pressed("upwards"):
-		self.add_force_local(Vector3(0, 70, 0), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3(0, 70, 0), Vector3(0, 0.05, 0))
 	elif Input.is_action_pressed("downwards"):
 		self.add_force_local(Vector3(0, -70, 0), Vector3(0, -0.05, 0))
 
 	if Input.is_action_pressed("rotate_left"):
-		self.add_torque(self.transform.basis.xform(Vector3(0, 20, 0)))
+		self.add_torque(self.transform.basis.xform(Vector3(0,20, 0)))
 	elif Input.is_action_pressed("rotate_right"):
 		self.add_torque(self.transform.basis.xform(Vector3(0, -20, 0)))
 
 	if Input.is_action_pressed("camera_up"):
 		$Camera.rotation_degrees.x = min($Camera.rotation_degrees.x + 0.1, 45)
+		SignalBus.emit_signal("camera_changed", floor($Camera.rotation_degrees.x))
 	elif Input.is_action_pressed("camera_down"):
-		$Camera.rotation_degrees.x = max($Camera.rotation_degrees.x - 0.1, -45)
+		$Camera.rotation_degrees.x = max($Camera.rotation_degrees.x - 0.1, - 45)
+		SignalBus.emit_signal("camera_changed", floor($Camera.rotation_degrees.x))
+		
+	
 
 	if Input.is_action_pressed("gripper_open"):
 		ljoint.set_param(6, 1)
-		rjoint.set_param(6, -1)
+		rjoint.set_param(6, - 1)
 	elif Input.is_action_pressed("gripper_close"):
-		ljoint.set_param(6, -1)
+		ljoint.set_param(6, - 1)
 		rjoint.set_param(6, 1)
 	else:
 		ljoint.set_param(6, 0)
 		rjoint.set_param(6, 0)
+
+
+func process_joystick():
+	#forward/backward/left/right strafe
+	var input_fb = - Input.get_joy_axis(0,JOY_AXIS_1)
+	var input_lrs = Input.get_joy_axis(0,JOY_AXIS_0)
+	if(abs(input_fb) >= deadzone or abs(input_lrs) >= deadzone):
+		self.add_force_local(Vector3( - input_lrs* gain, 0, input_fb*gain), Vector3(0, - input_fb*0.05, 0))
+	
+	#up/down
+	var input_ud = -Input.get_joy_axis(0,JOY_AXIS_3)
+	if(abs(input_ud) >= deadzone):
+		self.add_force_local(Vector3(0, input_ud*gain*2, 0), Vector3(0, input_ud*0.05, 0))
+	
+	#left/right rotate
+	var input_lrr = -Input.get_joy_axis(0,JOY_AXIS_2)
+	if(abs(input_lrr) >= deadzone):
+		self.add_torque(self.transform.basis.xform(Vector3(0, input_lrr*gain/2, 0)))
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

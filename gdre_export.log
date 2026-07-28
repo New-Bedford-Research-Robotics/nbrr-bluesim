@@ -1,0 +1,43 @@
+GDRE Tools v2.5.0
+Windows 10.0.26200, NVIDIA GeForce RTX 3080 Ti Laptop GPU, vulkan
+Opening file: ~/\Downloads\bluesim-windows\bluesim\build\windows\bluesim.pck
+Multiple passing candidates for bytecode version 13:
+3.5.0-stable (a7aad78), 3.2.0-stable (5565f55)
+Choosing only one that matches engine version: 3.2.0-stable (5565f55).
+Loaded 35 imported files
+Detected Engine Version: 3.2.3
+Detected Bytecode Revision: 3.2.0-stable (5565f55)
+Verified 109 files, no errors detected!
+New version of GDRE available: v2.6.0
+Get it here: https://github.com/GDRETools/gdsdecomp/releases/latest
+Extracted 109 files, no errors detected!
+Recreating plugin configs...
+
+Exporting scenes...
+*** Exporting 4 scenes took 17.02s
+
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     18
+Failed scripts:                         0
+Imported resources for export session:  35
+Successfully converted:                 35
+Lossy:                                  7
+Rewrote metadata:                       0
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 3.2.3 to edit the project.
+
+*******************************************************************************
+

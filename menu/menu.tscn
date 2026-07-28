@@ -153,6 +153,7 @@ func _on_customLevel_pressed(filename):
 	Globals.active_level = \"res://custom_level.tscn\"
 	ProjectSettings.load_resource_pack(\"res://levels/\" + filename)
 	SceneLoader.goto_scene(\"res://levels/baselevel.tscn\")
+	
 
 "
 

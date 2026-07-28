@@ -1,4 +1,4 @@
-tool
+tool 
 
 extends ImmediateGeometry
 var m = SpatialMaterial.new()
@@ -15,7 +15,7 @@ export (bool) var vertical_factor = true
 export (bool) var forward_factor = true
 export (bool) var lateral_factor = true
 
-# keeps track of transform changes to update motors matrix
+
 var last_transform
 
 func get_class():
@@ -41,59 +41,59 @@ func _process(_delta):
 
 	clear()
 
-	# Begin draw.
+	
 	begin(Mesh.PRIMITIVE_LINES)
 
-	# base
-	add_vertex(Vector3(0, -thickness, -thickness))
-	add_vertex(Vector3(0, -thickness, thickness))
+	
+	add_vertex(Vector3(0, - thickness, - thickness))
+	add_vertex(Vector3(0, - thickness, thickness))
 
-	add_vertex(Vector3(0, -thickness, thickness))
+	add_vertex(Vector3(0, - thickness, thickness))
 	add_vertex(Vector3(0, thickness, thickness))
 	
 	add_vertex(Vector3(0, thickness, thickness))
-	add_vertex(Vector3(0, thickness, -thickness))
+	add_vertex(Vector3(0, thickness, - thickness))
 	
-	add_vertex(Vector3(0, thickness, -thickness))
-	add_vertex(Vector3(0, -thickness, -thickness))
+	add_vertex(Vector3(0, thickness, - thickness))
+	add_vertex(Vector3(0, - thickness, - thickness))
 
-	# walls
-	add_vertex(Vector3(0, -thickness, -thickness))
-	add_vertex(Vector3(height, -thickness, -thickness))
+	
+	add_vertex(Vector3(0, - thickness, - thickness))
+	add_vertex(Vector3(height, - thickness, - thickness))
 
-	add_vertex(Vector3(0, -thickness, thickness))
-	add_vertex(Vector3(height, -thickness, thickness))
+	add_vertex(Vector3(0, - thickness, thickness))
+	add_vertex(Vector3(height, - thickness, thickness))
 	
 	add_vertex(Vector3(0, thickness, thickness))
 	add_vertex(Vector3(height, thickness, thickness))
 	
-	add_vertex(Vector3(0, thickness, -thickness))
-	add_vertex(Vector3(height, thickness, -thickness))
+	add_vertex(Vector3(0, thickness, - thickness))
+	add_vertex(Vector3(height, thickness, - thickness))
 
-	# Hat
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*-thickness))
-	add_vertex(Vector3(1.5*height, 0, 0))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*-thickness))
-	add_vertex(Vector3(1.5*height, 0, 0))
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * - thickness))
+	add_vertex(Vector3(1.5 * height, 0, 0))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*thickness))
-	add_vertex(Vector3(1.5*height, 0, 0))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * - thickness))
+	add_vertex(Vector3(1.5 * height, 0, 0))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*thickness))
-	add_vertex(Vector3(1.5*height, 0, 0))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * thickness))
+	add_vertex(Vector3(1.5 * height, 0, 0))
+	
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * thickness))
+	add_vertex(Vector3(1.5 * height, 0, 0))
 
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*-thickness))
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*-thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * - thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * - thickness))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*-thickness))
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * - thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * thickness))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*thickness, 1.3*thickness))
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * thickness, 1.3 * thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * thickness))
 	
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*thickness))
-	add_vertex(Vector3(0.9 * height, 1.3*-thickness, 1.3*-thickness))
-	# End drawing.
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * thickness))
+	add_vertex(Vector3(0.9 * height, 1.3 * - thickness, 1.3 * - thickness))
+	
 	end()
 

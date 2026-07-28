@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenery/defaultEnvironment.tres" type="Environment" id=1]
 [ext_resource path="res://scripts/settings.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://levels/baselevel.gd" type="Script" id=7]
 [ext_resource path="res://scenery/scene.tscn" type="PackedScene" id=8]
 [ext_resource path="res://vehicles/bluerovheavy/BlueRovHeavy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/HUDContainer.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "# Licensed under the MIT License.
@@ -307,6 +308,8 @@ script/source = "extends PanelContainer
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+#func _ready():
+	
 
 func _input(event):
 	if event.is_action_pressed(\"help\"):
@@ -314,6 +317,7 @@ func _input(event):
 			self.show()
 		else:
 			self.hide()
+
 "
 
 [sub_resource type="GDScript" id=4]
@@ -475,15 +479,55 @@ ROV:
 1/2: Increase/decrease lights
 3/4: Close/open gripper
 5/6: Camera tilt down/up
-Space: Rise
-Shift: Dive
-A/D: Strafe
-Up/Down: forward/backwards
+Space/Up: Rise
+Shift/Down: Dive
 left/right: Yaw left/right
+W/S: forward/backwards
+A/D: Strafe
 "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HUDContainer" type="PanelContainer" parent="ViewportCamera"]
+modulate = Color( 1, 1, 1, 0.619608 )
+anchor_left = 0.02
+anchor_top = 0.905
+anchor_right = 0.223
+anchor_bottom = 0.95
+margin_right = 14.0
+margin_bottom = 14.0
+size_flags_horizontal = 11
+script = ExtResource( 10 )
+
+[node name="BottomHUDContainer" type="HBoxContainer" parent="ViewportCamera/HUDContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 271.0
+margin_bottom = 34.0
+size_flags_horizontal = 9
+size_flags_vertical = 9
+
+[node name="GainLabel" type="Label" parent="ViewportCamera/HUDContainer/BottomHUDContainer"]
+margin_top = 6.0
+margin_right = 98.0
+margin_bottom = 20.0
+text = "Pilot Gain: 50%"
+valign = 1
+
+[node name="LightLabel" type="Label" parent="ViewportCamera/HUDContainer/BottomHUDContainer"]
+margin_left = 102.0
+margin_top = 6.0
+margin_right = 184.0
+margin_bottom = 20.0
+text = "Lights: 100%"
+
+[node name="CameraLabel" type="Label" parent="ViewportCamera/HUDContainer/BottomHUDContainer"]
+margin_left = 188.0
+margin_top = 6.0
+margin_right = 262.0
+margin_bottom = 20.0
+text = "Cam Tilt: 0°"
 
 [node name="ViewportGlobal" type="ViewportContainer" parent="."]
 pause_mode = 2

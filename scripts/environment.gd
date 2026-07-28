@@ -1,9 +1,9 @@
 extends Spatial
-const BUOYANCY = 10.0  # newtons?
-const HEIGHT = 2.4  # TODO: get this programatically
+const BUOYANCY = 10.0
+const HEIGHT = 2.4
 var underwater_env = load("res://scenery/underwaterEnvironment.tres")
 var surface_env = load("res://scenery/defaultEnvironment.tres")
-# darkest it gets
+
 onready var cameras = get_tree().get_nodes_in_group("cameras")
 onready var surface_altitude = $water.global_transform.origin.y
 
@@ -13,11 +13,13 @@ const simple_water = preload("res://assets/maujoe.basic_water_material/materials
 
 onready var depth = 0
 onready var last_depth = 0
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	set_physics_process(true)
 	update_fog()
 	underwater_env.fog_enabled = "custom" in Globals.active_level
+
 
 
 func calculate_buoyancy_and_ballast():
@@ -31,7 +33,7 @@ func calculate_buoyancy_and_ballast():
 		if buoys:
 			var children = buoys.get_children()
 			for buoy in children:
-				# print(buoy.transform.origin)
+				
 				var buoyancy = (
 					vehicle.buoyancy
 					* (surface_altitude - buoy.global_transform.origin.y)
@@ -42,7 +44,7 @@ func calculate_buoyancy_and_ballast():
 				vehicle.add_force_local_pos(Vector3(0, buoyancy, 0), buoy.transform.origin)
 		else:
 			var buoyancy = min(
-				vehicle.buoyancy,
+				vehicle.buoyancy, 
 				abs(vehicle.buoyancy * (vehicle.translation.y - HEIGHT / 3 - surface_altitude))
 			)
 			vehicle.add_force(Vector3(0, buoyancy, 0), vehicle.transform.basis.y * 0.07)
@@ -51,7 +53,7 @@ func calculate_buoyancy_and_ballast():
 			var children = ballasts.get_children()
 			for ballast in children:
 				vehicle.add_force_local_pos(
-					Vector3(0, -vehicle.ballast_kg * 9.8, 0), ballast.transform.origin
+					Vector3(0, - vehicle.ballast_kg * 9.8, 0), ballast.transform.origin
 				)
 
 
@@ -65,9 +67,9 @@ func update_fog():
 		depth = rov_camera.global_transform.origin.y - surface_altitude
 		last_depth = depth
 
-		var fog_distance = max(50 + 1 * depth, 20)
+		var fog_distance = max(50 + 3 * depth, 20)
 		underwater_env.fog_depth_end = fog_distance
-		var deep_factor = min(max(-depth / 50, 0), 1.0)
+		var deep_factor = min(max( - depth / 50, 0), 1.0)
 		Globals.deep_factor = deep_factor
 		var new_color = Globals.surface_ambient.linear_interpolate(
 			Globals.deep_ambient, deep_factor
@@ -79,8 +81,8 @@ func update_fog():
 		underwater_env.background_sky.ground_horizon_color = new_color
 		underwater_env.fog_color = new_color
 		underwater_env.ambient_light_energy = 1.0 - deep_factor
-		# underwater_env.ambient_light_color = new_color;
-		underwater_env.ambient_light_color = new_color  #surface_ambient.linear_interpolate(deep_ambient, max(1 - depth/50, 0))
+		
+		underwater_env.ambient_light_color = new_color
 		$sun.light_energy = max(0.3 - 0.5 * deep_factor, 0)
 		underwater_env.background_sky.sky_energy = max(5.0 - 5 * deep_factor, 0.0)
 
@@ -113,7 +115,7 @@ func _on_godrayToggle_toggled(button_pressed):
 
 
 func _on_dirtparticlesToggle_toggled(button_pressed):
-	$SuspendedParticleHolder/SuspendedParticles.emitting = button_pressed
+	$SuspendedParticleHolder / SuspendedParticles.emitting = button_pressed
 
 
 func _on_fancyWaterToggle_toggled(button_pressed):
@@ -122,7 +124,7 @@ func _on_fancyWaterToggle_toggled(button_pressed):
 		$water.set_surface_material(0, fancy_water)
 		$underwater.set_surface_material(0, fancy_underwater)
 	else:
-		# save previous materials
+		
 		fancy_underwater = $underwater.get_surface_material(0)
 		fancy_water = $water.get_surface_material(0)
 		$water.set_surface_material(0, simple_water)
