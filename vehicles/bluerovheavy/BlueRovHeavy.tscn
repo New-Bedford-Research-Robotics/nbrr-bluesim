@@ -221,13 +221,8 @@ material_override = SubResource( 5 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
 roll_factor = false
 pitch_factor = false
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t2" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( -0.186456, -0.186456, 3.03776e-08, 0, -4.29604e-08, -0.263689, 0.186456, -0.186456, 3.03776e-08, 0.175115, -0.125495, 0.284096 )
@@ -235,13 +230,8 @@ material_override = SubResource( 6 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
 roll_factor = false
 pitch_factor = false
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t3" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( 0.186456, 0.186456, -3.03776e-08, 0, -4.29604e-08, -0.263689, -0.186456, 0.186456, -3.03776e-08, -0.198316, -0.125495, -0.320506 )
@@ -249,13 +239,8 @@ material_override = SubResource( 7 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
 roll_factor = false
 pitch_factor = false
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t4" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( -0.186456, 0.186456, -3.03776e-08, 0, -4.29604e-08, -0.263689, -0.186456, -0.186456, 3.03776e-08, 0.197343, -0.125495, -0.33162 )
@@ -263,13 +248,8 @@ material_override = SubResource( 8 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
 roll_factor = false
 pitch_factor = false
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t5" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( 0.00654368, -0.263608, 0, 0.263608, 0.00654368, 7.10543e-15, 1.77636e-15, 8.88178e-16, 0.263689, -0.432878, 0.032324, 0.228526 )
@@ -277,13 +257,6 @@ material_override = SubResource( 9 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
-roll_factor = true
-pitch_factor = true
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t6" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( 0.00654368, -0.263608, 0, 0.263608, 0.00654368, 7.10543e-15, 1.77636e-15, 6.38378e-16, 0.263689, 0.434015, 0.032324, 0.228526 )
@@ -291,13 +264,6 @@ material_override = SubResource( 10 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
-roll_factor = true
-pitch_factor = true
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t7" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( 0.00654368, -0.263608, 0, 0.263608, 0.00654368, 7.10543e-15, 1.77636e-15, 6.38378e-16, 0.263689, -0.437324, 0.032324, -0.247154 )
@@ -305,13 +271,6 @@ material_override = SubResource( 11 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
-roll_factor = true
-pitch_factor = true
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="t8" type="ImmediateGeometry" parent="BlueRov"]
 transform = Transform( 0.00654368, -0.263608, 0, 0.263608, 0.00654368, 7.10543e-15, 1.77636e-15, 6.38378e-16, 0.263689, 0.42957, 0.032324, -0.247154 )
@@ -319,13 +278,6 @@ material_override = SubResource( 12 )
 script = ExtResource( 8 )
 thickness = 0.1
 height = 0.5
-thrust = 1
-roll_factor = true
-pitch_factor = true
-yaw_factor = true
-vertical_factor = true
-forward_factor = true
-lateral_factor = true
 
 [node name="newton" parent="BlueRov" instance=ExtResource( 2 )]
 transform = Transform( 0.303697, -0.141171, 6.1708e-09, 0, -1.46392e-08, -0.334905, 0.141171, 0.303697, -1.3275e-08, 0.218238, -0.255554, 0.0306985 )

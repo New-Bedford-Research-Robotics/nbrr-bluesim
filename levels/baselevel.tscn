@@ -503,7 +503,7 @@ script = ExtResource( 10 )
 [node name="BottomHUDContainer" type="HBoxContainer" parent="ViewportCamera/HUDContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 271.0
+margin_right = 346.0
 margin_bottom = 34.0
 size_flags_horizontal = 9
 size_flags_vertical = 9
@@ -528,6 +528,13 @@ margin_top = 6.0
 margin_right = 262.0
 margin_bottom = 20.0
 text = "Cam Tilt: 0°"
+
+[node name="DepthLabel" type="Label" parent="ViewportCamera/HUDContainer/BottomHUDContainer"]
+margin_left = 266.0
+margin_top = 6.0
+margin_right = 313.0
+margin_bottom = 20.0
+text = "Depth: "
 
 [node name="ViewportGlobal" type="ViewportContainer" parent="."]
 pause_mode = 2

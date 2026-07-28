@@ -167,6 +167,7 @@ func _physics_process(delta):
 	last_velocity = self.linear_velocity
 	get_servos()
 	send_fdm()
+	SignalBus.emit_signal("depth_changed", stepify(global_transform.origin.y,0.1)-7)
 
 
 func add_force_local(force: Vector3, pos: Vector3):
