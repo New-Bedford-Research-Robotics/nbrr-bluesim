@@ -1,0 +1,11 @@
+Model Information:
+* title:	Swing Ring
+* source:	https://sketchfab.com/3d-models/swing-ring-ef0424747b9840d9bd7776f7e4c58a44
+* author:	Erik Bänder (https://sketchfab.com/erikbaender)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Swing Ring" (https://sketchfab.com/3d-models/swing-ring-ef0424747b9840d9bd7776f7e4c58a44) by Erik Bänder (https://sketchfab.com/erikbaender) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

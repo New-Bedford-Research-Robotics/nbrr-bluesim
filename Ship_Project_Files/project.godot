@@ -1,0 +1,215 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDeepParallax",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/deep_parallax.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDepth",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/depth.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDepthWorldPosition",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/depth_world_position.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDistanceFade",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/distance_fade.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeDither",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/dither.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeEmissionAdd",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/emission_add.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeEmissionMultiply",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/emission_multiply.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeFlowMap",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/flowmap.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeFlowMapAddUV",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/flowmap_add_uv.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeObjectWorldPosition",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/object_world_position.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeProximityFade",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/proximity_fade.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRefraction",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/3d/refraction.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRotation2D",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/rotation_2d.gd"
+}, {
+"base": "VisualShaderNodeCustom",
+"class": "VisualShaderNodeRotation3D",
+"language": "GDScript",
+"path": "res://addons/visual_shader_node_library/shader_nodes/common/rotation_3d.gd"
+} ]
+_global_script_class_icons={
+"VisualShaderNodeDeepParallax": "",
+"VisualShaderNodeDepth": "",
+"VisualShaderNodeDepthWorldPosition": "",
+"VisualShaderNodeDistanceFade": "",
+"VisualShaderNodeDither": "",
+"VisualShaderNodeEmissionAdd": "",
+"VisualShaderNodeEmissionMultiply": "",
+"VisualShaderNodeFlowMap": "",
+"VisualShaderNodeFlowMapAddUV": "",
+"VisualShaderNodeObjectWorldPosition": "",
+"VisualShaderNodeProximityFade": "",
+"VisualShaderNodeRefraction": "",
+"VisualShaderNodeRotation2D": "",
+"VisualShaderNodeRotation3D": ""
+}
+
+[application]
+
+config/name="ship2"
+run/main_scene="res://custom_level.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Globals.tscn"
+
+[debug]
+
+settings/stdout/print_fps=true
+
+[display]
+
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "sketchfab" )
+
+[global]
+
+margin=false
+
+[input]
+
+downwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+strafe_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+strafe_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+backwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+upwards={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rotate_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rotate_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+F1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"unicode":0,"echo":false,"script":null)
+ ]
+}
+F2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777245,"unicode":0,"echo":false,"script":null)
+ ]
+}
+lights_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+lights_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+gripper_open={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":51,"unicode":0,"echo":false,"script":null)
+ ]
+}
+gripper_close={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":52,"unicode":0,"echo":false,"script":null)
+ ]
+}
+camera_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":53,"unicode":0,"echo":false,"script":null)
+ ]
+}
+camera_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":54,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/physics_fps=100
+3d/physics_engine="Bullet"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
