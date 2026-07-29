@@ -2,10 +2,10 @@ extends Spatial
 
 
 func _ready():
-	pass
+	pass  # Replace with function body.
 
 
-
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var vehicle = Globals.active_vehicle.find_node("cameraTarget", true, false)
 	var distance = self.global_transform.origin - vehicle.global_transform.origin

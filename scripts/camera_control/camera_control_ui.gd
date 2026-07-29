@@ -1,10 +1,10 @@
-
-
+# Licensed under the MIT License.
+# Copyright (c) 2018-2020 Jaccomo Lorenz (Maujoe)
 
 extends Control
 
-
-
+# Constant Gui Settings
+#*******************************************************************************
 const GUI_POS = Vector2(10, 10)
 const GUI_SIZE = Vector2(200, 0)
 const DRAGGABLE = true
@@ -13,7 +13,7 @@ const CUSTOM_BACKGROUND = false
 const BACKGROUND_COLOR = Color(0.15, 0.17, 0.23, 0.75)
 
 const MAX_SPEED = 50
-
+#*******************************************************************************
 
 var camera
 var shortcut
@@ -34,7 +34,7 @@ func _ready():
 	if camera.enabled:
 		set_process_input(true)
 
-		
+		# Create Gui
 		panel = PanelContainer.new()
 		panel.set_begin(GUI_POS)
 		panel.set_custom_minimum_size(GUI_SIZE)
@@ -58,7 +58,7 @@ func _ready():
 		mouse.select(camera.mouse_mode)
 		mouse.connect("item_selected", self, "_on_opt_mouse_item_selected")
 
-		
+		# Freelook
 		var freelook = CheckButton.new()
 		freelook.set_text("Freelook")
 		freelook.set_toggle_mode(true)
@@ -126,7 +126,7 @@ func _ready():
 		collisions.set_pressed(camera.collisions)
 		collisions.connect("toggled", self, "_on_btn_collisions_toggled")
 
-		
+		# Movement
 		var lbl_movement = Label.new()
 		lbl_movement.set_text("Movement")
 

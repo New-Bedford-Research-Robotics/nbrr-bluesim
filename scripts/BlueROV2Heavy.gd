@@ -13,8 +13,8 @@ var calculated_acceleration = Vector3(0, 0, 0)
 var buoyancy = 1.6 + self.mass * 9.8
 var _initial_position = 0
 var phys_time = 0
-const deadzone = 0.2
-var gain = 50
+const deadzone = 0.2 #controller deadzone
+var gain = 50 #pilot gain to start
 
 onready var light_glows = [$light_glow, $light_glow2, $light_glow3, $light_glow4]
 
@@ -299,24 +299,24 @@ func _unhandled_input(event):
 
 func process_keys():
 	if Input.is_action_pressed("forward"):
-		self.add_force_local(Vector3(0, 0, 40), Vector3(0, - 0.05, 0))
+		self.add_force_local(Vector3(0, 0, gain), Vector3(0, - 0.05, 0))
 	elif Input.is_action_pressed("backwards"):
-		self.add_force_local(Vector3(0, 0, -40), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3(0, 0, -gain), Vector3(0, -0.05, 0))
 
 	if Input.is_action_pressed("strafe_right"):
-		self.add_force_local(Vector3( - 40, 0, 0), Vector3(0, - 0.05, 0))
+		self.add_force_local(Vector3( - gain, 0, 0), Vector3(0, - 0.05, 0))
 	elif Input.is_action_pressed("strafe_left"):
-		self.add_force_local(Vector3(40, 0, 0), Vector3(0, - 0.05, 0))
+		self.add_force_local(Vector3(gain, 0, 0), Vector3(0, - 0.05, 0))
 
 	if Input.is_action_pressed("upwards"):
-		self.add_force_local(Vector3(0, 70, 0), Vector3(0, 0.05, 0))
+		self.add_force_local(Vector3(0, 1.5*gain, 0), Vector3(0, 0.05, 0))
 	elif Input.is_action_pressed("downwards"):
-		self.add_force_local(Vector3(0, -70, 0), Vector3(0, -0.05, 0))
+		self.add_force_local(Vector3(0, -1.5*gain, 0), Vector3(0, -0.05, 0))
 
 	if Input.is_action_pressed("rotate_left"):
-		self.add_torque(self.transform.basis.xform(Vector3(0,20, 0)))
+		self.add_torque(self.transform.basis.xform(Vector3(0,gain/2, 0)))
 	elif Input.is_action_pressed("rotate_right"):
-		self.add_torque(self.transform.basis.xform(Vector3(0, -20, 0)))
+		self.add_torque(self.transform.basis.xform(Vector3(0, -gain/2, 0)))
 
 	if Input.is_action_pressed("camera_up"):
 		$Camera.rotation_degrees.x = min($Camera.rotation_degrees.x + 0.1, 45)
