@@ -1,0 +1,278 @@
+GDRE Tools v2.6.3
+Windows 10.0.26200, NVIDIA GeForce RTX 4060 Laptop GPU, vulkan
+Opening file: ~/\Downloads\ship.pck
+Multiple passing candidates for bytecode version 13:
+3.5.0-stable (a7aad78), 3.2.0-stable (5565f55)
+Choosing only one that matches engine version: 3.2.0-stable (5565f55).
+Loaded 200 imported files
+Detected Engine Version: 3.2.3
+Detected Bytecode Revision: 3.2.0-stable (5565f55)
+Verified 515 files, no errors detected!
+Extracted 515 files, no errors detected!
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+WARNING: Mesh uses old surface format, which is deprecated (and loads slower). Consider re-importing or re-saving the scene. Path: "res://.import/test_bed.glb-bd9c3fb5ddb18a8690de8bb7ab65da37.scn::1"
+   at: ArrayMesh::_set (scene\resources\mesh.cpp:1369)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+WARNING: This mesh uses an old deprecated parameter name. Consider re-saving this scene in order for it to continue working in future versions.
+   at: MeshInstance3D::_set (scene\3d\mesh_instance_3d.cpp:78)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+ERROR: Parameter "_image_compress_etc2_func" is null.
+   at: Image::_compress_from_channels (core\io\image.cpp:2998)
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     17
+Scripts not decompiled:                 0
+Imported resources for export session:  200
+Successfully converted:                 200
+Lossy:                                  124
+Rewrote metadata:                       0
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     0
+-------------
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 3.2.3 to edit the project.
+
+*******************************************************************************
+
