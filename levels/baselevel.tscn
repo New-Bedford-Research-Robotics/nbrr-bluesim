@@ -403,7 +403,7 @@ script = ExtResource( 2 )
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 165.0
-margin_bottom = 217.0
+margin_bottom = 255.0
 
 [node name="godrayToggle" type="CheckButton" parent="ViewportCamera/SettingsPanel/VBoxContainer"]
 margin_right = 158.0
@@ -449,6 +449,19 @@ margin_bottom = 210.0
 min_value = 60.0
 max_value = 500.0
 value = 60.0
+
+[node name="Deadzone" type="Label" parent="ViewportCamera/SettingsPanel/VBoxContainer"]
+margin_top = 214.0
+margin_right = 158.0
+margin_bottom = 228.0
+text = "Deadzone:"
+
+[node name="DeadzoneSlider" type="HSlider" parent="ViewportCamera/SettingsPanel/VBoxContainer"]
+margin_top = 232.0
+margin_right = 158.0
+margin_bottom = 248.0
+max_value = 100.0
+step = 5.0
 
 [node name="HelpPanel" type="PanelContainer" parent="ViewportCamera"]
 modulate = Color( 1, 1, 1, 0.619608 )
@@ -664,3 +677,4 @@ __meta__ = {
 [connection signal="toggled" from="ViewportCamera/SettingsPanel/VBoxContainer/Ping360Toggle" to="Ping360Viewport" method="_on_Ping360Toggle_toggled"]
 [connection signal="ready" from="ViewportCamera/SettingsPanel/VBoxContainer/physicsRateSlider" to="ViewportCamera/SettingsPanel" method="_on_HSlider_ready"]
 [connection signal="value_changed" from="ViewportCamera/SettingsPanel/VBoxContainer/physicsRateSlider" to="ViewportCamera/SettingsPanel" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="ViewportCamera/SettingsPanel/VBoxContainer/DeadzoneSlider" to="ViewportCamera/SettingsPanel" method="_on_DeadzoneSlider_value_changed"]

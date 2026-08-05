@@ -14,6 +14,8 @@ func _ready():
 	Engine.iterations_per_second = Globals.physics_rate
 	$VBoxContainer/physicsRate.text = 'Physics: ' + String(Globals.physics_rate) + ' Hz'
 	$VBoxContainer/physicsRateSlider.value = Globals.physics_rate
+	$VBoxContainer/Deadzone.text = 'Deadzone: 5%'
+	$VBoxContainer/DeadzoneSlider.value = 5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,3 +35,10 @@ func _on_HSlider_value_changed(value):
 	Globals.physics_rate = value
 	Engine.iterations_per_second = value
 	$VBoxContainer/physicsRate.text = 'Physics: ' + String(Globals.physics_rate) + 'Hz'
+	
+	
+
+
+func _on_DeadzoneSlider_value_changed(value):
+	SignalBus.emit_signal("deadzone_changed", value/100)
+	$VBoxContainer/Deadzone.text = 'Deadzone: ' + String(value) + '%'

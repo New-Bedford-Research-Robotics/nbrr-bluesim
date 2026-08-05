@@ -13,7 +13,7 @@ var calculated_acceleration = Vector3(0, 0, 0)
 var buoyancy = 1.6 + self.mass * 9.8
 var _initial_position = 0
 var phys_time = 0
-const deadzone = 0.2 #controller deadzone
+var deadzone = 0.05 #controller deadzone
 var gain = 50 #pilot gain to start
 
 onready var light_glows = [$light_glow, $light_glow2, $light_glow3, $light_glow4]
@@ -22,6 +22,9 @@ onready var ljoint = get_tree().get_root().find_node("ljoint", true, false)
 onready var rjoint = get_tree().get_root().find_node("rjoint", true, false)
 onready var wait_SITL = Globals.wait_SITL
 
+
+func update_deadzone(newdeadzone):
+	deadzone = newdeadzone
 
 func connect_fmd_in():
 	if interface.listen(9002) != OK:
@@ -151,6 +154,8 @@ func _ready():
 		return
 	if not Globals.isHTML5:
 		connect_fmd_in()
+		
+	SignalBus.connect('deadzone_changed',self,'update_deadzone')
 	
 
 
