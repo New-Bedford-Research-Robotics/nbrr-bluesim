@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
 [ext_resource path="res://scenery/terrain/terrain_shader.tres" type="Shader" id=1]
+[ext_resource path="res://scenery/terrain/textures/caustic_texture.tres" type="Texture" id=2]
 
 [resource]
 shader = ExtResource( 1 )
@@ -16,4 +17,7 @@ shader_param/cavity_bright = 2.051
 shader_param/AO_str = 0.708
 shader_param/tiling_mask = 0.008
 shader_param/tiling_param = 3.501
+shader_param/distortion_scale = Vector3( 30, 30, 0 )
+shader_param/Effect_Intensity = 0.5
 shader_param/light_mixer_angle = 0.999
+shader_param/distortion_effect = ExtResource( 2 )

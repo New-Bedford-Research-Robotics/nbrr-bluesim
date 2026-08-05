@@ -18,7 +18,7 @@
 [ext_resource path="res://scenery/terrain/textures/caust_014.png" type="Texture" id=16]
 
 [resource]
-flags = 7
+flags = 23
 frames = 16
 fps = 15.9
 frame_0/texture = ExtResource( 14 )
