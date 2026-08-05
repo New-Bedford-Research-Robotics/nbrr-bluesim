@@ -42,3 +42,7 @@ func _on_HSlider_value_changed(value):
 func _on_DeadzoneSlider_value_changed(value):
 	SignalBus.emit_signal("deadzone_changed", value/100)
 	$VBoxContainer/Deadzone.text = 'Deadzone: ' + String(value) + '%'
+
+
+func _on_FogDistanceSlider_value_changed(value):
+	SignalBus.emit_signal("update_fog", value)

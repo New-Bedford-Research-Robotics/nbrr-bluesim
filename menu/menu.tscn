@@ -103,7 +103,8 @@ func _notification(what):
 func create_level_buttons(levels):
 	for filename in levels.keys():
 		var button = Button.new()
-		button.text = levels[filename]
+		var filename_no_pck = filename.replace('.pck','')
+		button.text = filename_no_pck
 		button.add_font_override(\"font\", $HBoxContainer/Menu/Buttons/poolLevel.get_font(\"font\"))
 		button.connect(\"pressed\", self, \"_on_customLevel_pressed\", [filename])
 		$HBoxContainer/Menu/Buttons.add_child(button)

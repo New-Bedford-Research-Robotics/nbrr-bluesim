@@ -9,16 +9,23 @@ onready var surface_altitude = $water.global_transform.origin.y
 
 var fancy_water
 var fancy_underwater
+
 const simple_water = preload("res://assets/maujoe.basic_water_material/materials/basic_water_material.material")
 
+var fog_intensity = 20
 onready var depth = 0
 onready var last_depth = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(true)
 	update_fog()
 	underwater_env.fog_enabled = "custom" in Globals.active_level
+	SignalBus.connect('update_fog',self,'fog_changed')
 
+func fog_changed(new_fog):
+	fog_intensity = new_fog
+	self.update_fog()
 
 func calculate_buoyancy_and_ballast():
 	var vehicles = get_tree().get_nodes_in_group("buoyant")
@@ -68,12 +75,12 @@ func update_fog():
 		depth = rov_camera.global_transform.origin.y - surface_altitude
 		last_depth = depth
 
-		var fog_distance = max(50 + 3 * depth, 20)
+		var fog_distance = fog_intensity
 		underwater_env.fog_depth_end = fog_distance
 		var deep_factor = min(max( - depth / 50, 0), 1.0)
 		Globals.deep_factor = deep_factor
 		var new_color = Globals.surface_ambient.linear_interpolate(
-			Globals.deep_ambient, deep_factor
+			Globals.deep_ambient, deep_factor + (100-fog_distance)/115
 		)
 		Globals.current_ambient = new_color.darkened(0.5)
 		underwater_env.background_color = new_color
