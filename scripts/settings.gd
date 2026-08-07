@@ -16,6 +16,7 @@ func _ready():
 	$VBoxContainer/physicsRateSlider.value = Globals.physics_rate
 	$VBoxContainer/Deadzone.text = 'Deadzone: 5%'
 	$VBoxContainer/DeadzoneSlider.value = 5
+	self._on_FogDistanceSlider_value_changed(100)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,3 +47,7 @@ func _on_DeadzoneSlider_value_changed(value):
 
 func _on_FogDistanceSlider_value_changed(value):
 	SignalBus.emit_signal("update_fog", value)
+
+
+func _on_LightSlider_value_changed(value):
+	SignalBus.emit_signal("update_light", 1-value)

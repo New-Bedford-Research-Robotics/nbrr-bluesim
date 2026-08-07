@@ -12,20 +12,24 @@ var fancy_underwater
 
 const simple_water = preload("res://assets/maujoe.basic_water_material/materials/basic_water_material.material")
 
-var fog_intensity = 20
+onready var fog_intensity = 100
+onready var light_intensity = 0 #0 = full bright, 1 = full dark
 onready var depth = 0
 onready var last_depth = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_physics_process(true)
-	update_fog()
 	underwater_env.fog_enabled = "custom" in Globals.active_level
 	SignalBus.connect('update_fog',self,'fog_changed')
+	SignalBus.connect('update_light',self,'light_changed')
+	self.update_fog()
 
 func fog_changed(new_fog):
 	fog_intensity = new_fog
 	self.update_fog()
+func light_changed(new_light):
+	light_intensity = new_light
 
 func calculate_buoyancy_and_ballast():
 	var vehicles = get_tree().get_nodes_in_group("buoyant")
@@ -80,7 +84,7 @@ func update_fog():
 		var deep_factor = min(max( - depth / 50, 0), 1.0)
 		Globals.deep_factor = deep_factor
 		var new_color = Globals.surface_ambient.linear_interpolate(
-			Globals.deep_ambient, deep_factor + (100-fog_distance)/115
+			Globals.deep_ambient, deep_factor + (100-fog_distance)/150
 		)
 		Globals.current_ambient = new_color.darkened(0.5)
 		underwater_env.background_color = new_color
@@ -88,11 +92,11 @@ func update_fog():
 		underwater_env.background_sky.ground_bottom_color = new_color
 		underwater_env.background_sky.ground_horizon_color = new_color
 		underwater_env.fog_color = new_color
-		underwater_env.ambient_light_energy = 1.0 - deep_factor
+		underwater_env.ambient_light_energy = max(1.0 - deep_factor - 2*light_intensity,0)
 		
 		underwater_env.ambient_light_color = new_color
-		$sun.light_energy = max(0.3 - 0.5 * deep_factor, 0)
-		underwater_env.background_sky.sky_energy = max(5.0 - 5 * deep_factor, 0.0)
+		$sun.light_energy = max(0.3 - 0.5 * deep_factor - light_intensity*2, 0)
+		underwater_env.background_sky.sky_energy = max(5.0 - 5 * (deep_factor+light_intensity), 0.0)
 
 		for camera in cameras:
 			depth = camera.global_transform.origin.y - surface_altitude
